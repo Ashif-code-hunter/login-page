@@ -94,7 +94,7 @@ class LogInState extends State<LogIn> {
                             user = value;
                         },
                         decoration: kTextFieldDecoration.copyWith(
-                            hintText: 'Enter your user name'),
+                            hintText: 'Enterg user name'),
                       ),
                     ),
 
