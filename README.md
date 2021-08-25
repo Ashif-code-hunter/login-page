@@ -19,4 +19,7 @@ Background image is by
  href='https://www.freepik.com/vectors/abstract'>Abstract vector created by coolvector - www.freepik.com
  
  Demo
- ![Capture](https://user-images.githubusercontent.com/71429125/130785571-13518914-6fc6-4662-bab8-98408f2172f0.PNG)
+ 
+ ![Capture](https://user-images.githubusercontent.com/71429125/130786275-918e2e05-fc77-4328-a2e5-f5a122bed89f.PNG)
+
+
