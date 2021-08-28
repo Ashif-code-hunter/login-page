@@ -8,9 +8,16 @@ class LogIn extends StatefulWidget {
 }
 
 class LogInState extends State<LogIn> {
+  bool _passValidate = false;
+  bool _userValidate = false;
+
+  final _passText = TextEditingController();
+  final _userText = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     String user ;
+    String pass;
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -88,13 +95,14 @@ class LogInState extends State<LogIn> {
                       padding:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       child: TextField(
+                        controller: _userText,
                         keyboardType: TextInputType.emailAddress,
                         textAlign: TextAlign.center,
                         onChanged: (value) {
                             user = value;
                         },
                         decoration: kTextFieldDecoration.copyWith(
-                            hintText: 'Enterg user name'),
+                            hintText: 'Enter user name',errorText: _userValidate ? "User name must have 4 characters" : null),
                       ),
                     ),
 
@@ -102,11 +110,14 @@ class LogInState extends State<LogIn> {
                       padding:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       child: TextField(
+                        controller: _passText,
                         obscureText: true,
                         textAlign: TextAlign.center,
-                        onChanged: null,
+                        onChanged: (value) {
+                          user = value;
+                        },
                         decoration: kTextFieldDecoration.copyWith(
-                            hintText: 'Enter your password'),
+                            hintText: 'Enter your password',errorText: _passValidate ? "Password should contain more than 8 characters" : null),
                       ),
                     ),
                     SizedBox(
@@ -134,13 +145,20 @@ class LogInState extends State<LogIn> {
                             ),
                           ),
                           onPressed: () {
-                            print(user);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Home(username: user),
-                              ),
-                            );
+                            setState(() {
+                              _passText.text.length < 8? _passValidate = true : _passValidate = false;
+                              _userText.text.length <4 ? _userValidate = true : _userValidate = false;
+                            });
+                            if (_passValidate!=true && _userValidate!=true)
+                              {
+                             Navigator.push(
+                               context,
+                               MaterialPageRoute(
+                                 builder: (context) => Home(username: user),
+                               ),
+                             );
+                             }
+
                           },
                         ),
                       ),
